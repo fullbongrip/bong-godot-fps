@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctihupgduaefp"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_2j6c1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ib2dy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ij1g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eaomm"]
+height = 1.51111
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_2j6c1")
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_ib2dy")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684572, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="Head"]
+
+[node name="Slide_Check" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.892267, 0)
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4ij1g")
+
+[node name="CrouchCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18271, 0)
+shape = SubResource("CapsuleShape3D_eaomm")
+disabled = true
+
+[node name="SlideCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18271, 0)
+shape = SubResource("CapsuleShape3D_eaomm")
+disabled = true
