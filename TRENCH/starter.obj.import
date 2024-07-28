@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cirwii1qndrgq"
+path="res://.godot/imported/starter.obj-5bcd2620aef2b173361136d7cfd1e7bf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/starter.obj-5bcd2620aef2b173361136d7cfd1e7bf.mesh"]
+
+source_file="res://TRENCH/starter.obj"
+dest_files=["res://.godot/imported/starter.obj-5bcd2620aef2b173361136d7cfd1e7bf.mesh", "res://.godot/imported/starter.obj-5bcd2620aef2b173361136d7cfd1e7bf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

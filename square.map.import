@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://ev72u2pv1tmt"
+path="res://.godot/imported/square.map-782956e615e0912363c064968f5e0e38.tres"
+
+[deps]
+
+source_file="res://square.map"
+dest_files=["res://.godot/imported/square.map-782956e615e0912363c064968f5e0e38.tres"]
+
+[params]
+
