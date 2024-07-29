@@ -21,7 +21,8 @@ var free_looking_tilt = -0.08 # To make free looking more realistic.
 var wall_tilt_left = -0.2
 var wall_tilt_right = 0.2
 var head_bobbing = false
-var can_shoot = true
+var can_shoot = false
+var can_shoot_ak = false
 
 # States
 var walking = false
@@ -56,6 +57,11 @@ var current_state := AIR
 var gravity = 9.8
 
 # Export variables.
+@export var default_cavas : CanvasLayer
+@export var pistol_canvas : CanvasLayer
+@export var AK_canvas : CanvasLayer
+@export var AK_sprite : AnimatedSprite2D
+@export var AK_shot_sound : AudioStreamPlayer
 @export var pistol_sprite : AnimatedSprite2D
 @export var pistol_shot_sound : AudioStreamPlayer
 @export var can_shoot_ray : RayCast3D
@@ -78,6 +84,8 @@ var gravity = 9.8
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pistol_canvas.hide()
+	AK_canvas.hide()
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -97,6 +105,36 @@ func _physics_process(delta):
 	# Falling gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+	
+	# Handle Weapon Switching.
+	if Input.is_action_just_pressed("AK"):
+		if !AK_canvas.visible:
+			default_cavas.hide()
+			pistol_canvas.hide()
+			AK_canvas.show()
+			can_shoot_ak = true
+			can_shoot = false
+		else:
+			default_cavas.show()
+			pistol_canvas.hide()
+			AK_canvas.hide()
+			can_shoot_ak = false
+			can_shoot = false
+			
+	if Input.is_action_just_pressed("pistol"):
+		if !pistol_canvas.visible:
+			default_cavas.hide()
+			AK_canvas.hide()
+			pistol_canvas.show()
+			can_shoot_ak = false
+			can_shoot = true
+		else:
+			default_cavas.show()
+			pistol_canvas.hide()
+			AK_canvas.hide()
+			can_shoot_ak = false
+			can_shoot = false
+	
 	
 	# Handle Sprinting.
 	if Input.is_action_pressed("crouch") or crouch_check.is_colliding() or sliding or Input.is_action_pressed("slide"):
@@ -211,7 +249,8 @@ func _physics_process(delta):
 	update_state()
 	check_jump()
 	wall_run()
-	#pistol_shot()
+	pistol_shot()
+	AK_shot()
 	
 	# Smoothly interpolate the head height
 	current_head_height = lerp(current_head_height, target_head_height, 8.0 * delta)
@@ -261,13 +300,28 @@ func check_jump():
 func _on_slide_cooldown_timeout():
 	can_slide = true
 
-#func pistol_shot():
+func pistol_shot():
 	if !can_shoot:
 		return
-	if Input.is_action_pressed("left_mouse"):
-		can_shoot = false
-		pistol_sprite.play("pistol_fire")
-		pistol_shot_sound.play()
+	if pistol_canvas.visible:
+		if Input.is_action_pressed("left_mouse"):
+				can_shoot = false
+				pistol_sprite.play("pistol_fire")
+				pistol_shot_sound.play()
+
+func AK_shot():
+	if !can_shoot_ak:
+		return
+	if AK_canvas.visible:
+		if Input.is_action_pressed("left_mouse"):
+			can_shoot_ak = false
+			AK_sprite.play("ak_fire")
+			AK_shot_sound.play()
+
 
 func shoot_anim_done():
 	can_shoot = true
+
+
+func ak_shoot_anim_done():
+	can_shoot_ak = true
