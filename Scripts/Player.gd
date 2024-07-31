@@ -38,7 +38,7 @@ var t_bob = 0.0
 
 # FOV variables.
 var BASE_FOV = 95.0
-const FOV_CHANGE = 1.04
+const FOV_CHANGE = 1.2
 
 # Sliding variables.
 var slide_timer = 0.0
@@ -79,6 +79,7 @@ var gravity = 9.8
 @export var crouching_mesh : MeshInstance3D
 @export var standing_mesh : MeshInstance3D
 @export var slide_cooldown : Timer
+@export var death_box : Area3D
 
 
 
@@ -87,12 +88,12 @@ func _ready():
 	pistol_canvas.hide()
 	AK_canvas.hide()
 
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventMouseMotion:
 		if free_looking:
 			neck.rotate_y(deg_to_rad(-event.relative.x * SENSITIVITY))
 			neck.rotation.x = clamp(neck.rotation.x, deg_to_rad(-70), deg_to_rad(80))
-			neck.rotation.y = clamp(neck.rotation.y, deg_to_rad(-120), deg_to_rad(120))
+			neck.rotation.y = clamp(neck.rotation.y, deg_to_rad(-140), deg_to_rad(140))
 		else:
 			self.rotate_y(deg_to_rad(-event.relative.x * SENSITIVITY))
 			camera.rotate_x(deg_to_rad(-event.relative.y * SENSITIVITY))
@@ -100,6 +101,10 @@ func _unhandled_input(event):
 		
 
 func _physics_process(delta):
+	
+	# Reset on die.
+	
+	
 	# Get Movement Input.
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	# Falling gravity.
@@ -325,3 +330,7 @@ func shoot_anim_done():
 
 func ak_shoot_anim_done():
 	can_shoot_ak = true
+
+
+func _on_death_zone_entered(area):
+	global_position = Vector3(0.0, 1.0, 0.0)

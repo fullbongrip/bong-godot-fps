@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxg74hg0rs01r"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_5ogav"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_5ogav")

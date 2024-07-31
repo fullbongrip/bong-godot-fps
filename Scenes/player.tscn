@@ -1,39 +1,342 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctihupgduaefp"]
+[gd_scene load_steps=26 format=3 uid="uid://ctihupgduaefp"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_2j6c1"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_s5kxy"]
+[ext_resource type="Texture2D" uid="uid://4nrf73v5im3o" path="res://assets/gun_sprites.png" id="2_7cp4m"]
+[ext_resource type="AudioStream" uid="uid://b8nc0c6x2bxsm" path="res://assets/revolver_shot1.wav" id="3_vdr32"]
+[ext_resource type="Texture2D" uid="uid://dxbs1bdrusqo6" path="res://assets/AK741-Sheet-export.png" id="4_ootuw"]
+[ext_resource type="AudioStream" uid="uid://dvio1carn273p" path="res://assets/ak_shot.wav" id="5_1bb20"]
+[ext_resource type="FontFile" uid="uid://d2vgt2qnjkwsd" path="res://assets/doom-2016-font/Doom2016Left-RpJDA.ttf" id="6_ndniq"]
+[ext_resource type="FontFile" uid="uid://bjh7108vp6pdi" path="res://assets/doom-2016-font/Doom2016Right-VGz0z.ttf" id="7_rjxvk"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ib2dy"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gplbx"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ij1g"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vreqj"]
+height = 1.5
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eaomm"]
-height = 1.51111
+[sub_resource type="BoxShape3D" id="BoxShape3D_oh731"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_60lmm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q11pw"]
+atlas = ExtResource("2_7cp4m")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fpmx"]
+atlas = ExtResource("2_7cp4m")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3p2p"]
+atlas = ExtResource("2_7cp4m")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gylt5"]
+atlas = ExtResource("2_7cp4m")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei7d4"]
+atlas = ExtResource("2_7cp4m")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmfa3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q11pw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fpmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3p2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gylt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei7d4")
+}],
+"loop": false,
+"name": &"pistol_fire",
+"speed": 15.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2tnq"]
+atlas = ExtResource("4_ootuw")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtfdt"]
+atlas = ExtResource("4_ootuw")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywp17"]
+atlas = ExtResource("4_ootuw")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ie66"]
+atlas = ExtResource("4_ootuw")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckwkd"]
+atlas = ExtResource("4_ootuw")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ants"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2tnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtfdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywp17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ie66")
+}],
+"loop": false,
+"name": &"ak_fire",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckwkd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d3lcu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jdhgp"]
+height = 1.2
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("1_2j6c1")
+script = ExtResource("1_s5kxy")
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CapsuleMesh_ib2dy")
+layers = 4
+mesh = SubResource("CapsuleMesh_gplbx")
 
-[node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684572, 0)
+[node name="CrouchingMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.99414, 0, 0, 0, 1, 0, -0.232059, 0)
+layers = 4
+mesh = SubResource("CapsuleMesh_vreqj")
 
-[node name="PlayerCamera" type="Camera3D" parent="Head"]
+[node name="RayHolder" type="Node3D" parent="."]
 
-[node name="Slide_Check" type="RayCast3D" parent="."]
+[node name="Slide_Check" type="RayCast3D" parent="RayHolder"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.892267, 0)
 
-[node name="PlayerCollision" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_4ij1g")
+[node name="Crouch_Check" type="RayCast3D" parent="RayHolder"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0.180914, -5.01091e-08)
+
+[node name="UpHillCheck" type="RayCast3D" parent="RayHolder"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.916582, -4.00651e-08)
+
+[node name="ShootingColliderCheck" type="RayCast3D" parent="RayHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.956319, 0)
+target_position = Vector3(0, 2, -100)
+collision_mask = 3
+
+[node name="LeftWallChecker" type="ShapeCast3D" parent="RayHolder"]
+transform = Transform3D(0.8, 0, 1.77636e-15, 0, 1.50521, 0, 0, 0, 0.534019, -0.447913, 1.57823, -0.0019412)
+shape = SubResource("BoxShape3D_oh731")
+
+[node name="RightWallChecker" type="ShapeCast3D" parent="RayHolder"]
+transform = Transform3D(0.8, 0, 0, 0, 1.51001, 0, 0, 0, 0.519472, 0.477336, 1.56634, 0)
+shape = SubResource("BoxShape3D_60lmm")
+
+[node name="CanvasHolder" type="Node3D" parent="."]
+
+[node name="PistolCanvas" type="CanvasLayer" parent="CanvasHolder"]
+
+[node name="PistolBase" type="Control" parent="CanvasHolder/PistolCanvas"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasHolder/PistolCanvas/PistolBase"]
+position = Vector2(214.5, -115.5)
+scale = Vector2(0.607422, 0.607422)
+sprite_frames = SubResource("SpriteFrames_xmfa3")
+animation = &"pistol_fire"
+autoplay = "default"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasHolder/PistolCanvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.443137)
+metadata/_edit_use_anchors_ = true
+
+[node name="PistolShot" type="AudioStreamPlayer" parent="CanvasHolder/PistolCanvas"]
+stream = ExtResource("3_vdr32")
+bus = &"SFX"
+
+[node name="AkCanvas" type="CanvasLayer" parent="CanvasHolder"]
+
+[node name="AkBase" type="Control" parent="CanvasHolder/AkCanvas"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasHolder/AkCanvas/AkBase"]
+position = Vector2(131, -201)
+scale = Vector2(0.945312, 0.945312)
+sprite_frames = SubResource("SpriteFrames_7ants")
+autoplay = "default"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasHolder/AkCanvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.443137)
+metadata/_edit_use_anchors_ = true
+
+[node name="AkShot" type="AudioStreamPlayer" parent="CanvasHolder/AkCanvas"]
+stream = ExtResource("5_1bb20")
+volume_db = 3.525
+bus = &"SFX"
+
+[node name="DefaultCanvas" type="CanvasLayer" parent="CanvasHolder"]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasHolder/DefaultCanvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.6)
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="CanvasHolder/DefaultCanvas"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeathScreen" type="Panel" parent="CanvasHolder/DefaultCanvas/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -33.0
+offset_right = 11.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.64, 1.08)
+
+[node name="Label" type="Label" parent="CanvasHolder/DefaultCanvas/Control/DeathScreen"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("6_ndniq")
+theme_override_font_sizes/font_size = 26
+text = "You Died"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+visible_characters_behavior = 1
+
+[node name="Button" type="Button" parent="CanvasHolder/DefaultCanvas/Control/DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.8536
+offset_top = -3.2963
+offset_right = 52.1464
+offset_bottom = 33.7037
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_rjxvk")
+theme_override_font_sizes/font_size = 25
+text = "RESTART"
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.438684, 0)
+
+[node name="Head" type="Node3D" parent="Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.532674, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="Neck/Head"]
+cull_mask = 1048571
+fov = 95.0
+
+[node name="StandingCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_d3lcu")
 
 [node name="CrouchCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18271, 0)
-shape = SubResource("CapsuleShape3D_eaomm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.377396, 0)
+shape = SubResource("CapsuleShape3D_jdhgp")
 disabled = true
 
-[node name="SlideCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18271, 0)
-shape = SubResource("CapsuleShape3D_eaomm")
-disabled = true
+[node name="SlideCooldown" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true

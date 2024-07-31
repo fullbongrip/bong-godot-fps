@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgiptcudapi18"
+path="res://.godot/imported/an old heartbeat.mp3-89efd64c33f6a7cef5e0fa2991149de5.mp3str"
+
+[deps]
+
+source_file="res://assets/MUSIC/an old heartbeat.mp3"
+dest_files=["res://.godot/imported/an old heartbeat.mp3-89efd64c33f6a7cef5e0fa2991149de5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

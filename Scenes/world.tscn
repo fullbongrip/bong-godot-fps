@@ -1,14 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://cutq0sn8bcvor"]
+[gd_scene load_steps=15 format=3 uid="uid://cutq0sn8bcvor"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_5sjw7"]
 [ext_resource type="Texture2D" uid="uid://bifoeshep5rav" path="res://TRENCH/textures/PixelArtTexture/PixelTexture (142).png" id="1_wr73a"]
 [ext_resource type="Texture2D" uid="uid://b2w08caig87jy" path="res://TRENCH/textures/PixelArtTexture/PixelTexture (149).png" id="2_771ln"]
 [ext_resource type="Texture2D" uid="uid://rcysiij5qgfc" path="res://TRENCH/textures/PixelArtTexture/PixelTexture (124).png" id="3_68gcf"]
-[ext_resource type="Texture2D" uid="uid://4nrf73v5im3o" path="res://assets/gun_sprites.png" id="5_ydxcj"]
-[ext_resource type="AudioStream" uid="uid://b8nc0c6x2bxsm" path="res://assets/revolver_shot1.wav" id="6_qps4j"]
-[ext_resource type="Texture2D" uid="uid://dxbs1bdrusqo6" path="res://assets/AK741-Sheet-export.png" id="6_rknim"]
-[ext_resource type="AudioStream" uid="uid://dvio1carn273p" path="res://assets/ak_shot.wav" id="8_f7xc3"]
+[ext_resource type="PackedScene" uid="uid://ctihupgduaefp" path="res://Scenes/player.tscn" id="4_7eg3j"]
 [ext_resource type="PackedScene" uid="uid://bhlysa1q3801o" path="res://Starter.tscn" id="8_n12oa"]
+[ext_resource type="AudioStream" uid="uid://qvgrjkrtxwit" path="res://assets/MUSIC/villain.mp3" id="10_382vu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4c0p"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -45,120 +42,15 @@ uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ib2dy"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sln6c"]
-height = 1.5
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_b4mts"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pe81v"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ij1g"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5e3vb"]
-height = 1.2
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q11pw"]
-atlas = ExtResource("5_ydxcj")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5fpmx"]
-atlas = ExtResource("5_ydxcj")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w3p2p"]
-atlas = ExtResource("5_ydxcj")
-region = Rect2(1024, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gylt5"]
-atlas = ExtResource("5_ydxcj")
-region = Rect2(1536, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ei7d4"]
-atlas = ExtResource("5_ydxcj")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_16lwq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q11pw")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5fpmx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w3p2p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gylt5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ei7d4")
-}],
-"loop": false,
-"name": &"pistol_fire",
-"speed": 10.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2tnq"]
-atlas = ExtResource("6_rknim")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vtfdt"]
-atlas = ExtResource("6_rknim")
-region = Rect2(1024, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ywp17"]
-atlas = ExtResource("6_rknim")
-region = Rect2(1536, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ie66"]
-atlas = ExtResource("6_rknim")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ckwkd"]
-atlas = ExtResource("6_rknim")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qdqxh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l2tnq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vtfdt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ywp17")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ie66")
-}],
-"loop": false,
-"name": &"ak_fire",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ckwkd")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="BoxShape3D" id="BoxShape3D_eit2o"]
+size = Vector3(1, 0.360924, 1)
 
 [node name="World" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+layers = 7
+light_color = Color(1, 1, 0.890196, 1)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -276,194 +168,20 @@ material = SubResource("StandardMaterial3D_b1gmy")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="BoxHolder"]
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("default_cavas", "pistol_canvas", "AK_canvas", "AK_sprite", "AK_shot_sound", "pistol_sprite", "pistol_shot_sound", "can_shoot_ray", "player", "neck", "head", "camera", "slide_check", "crouch_check", "up_hill_check", "left_wall_check", "right_wall_check", "standing_collison", "crouching_collison", "crouching_mesh", "standing_mesh", "slide_cooldown")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
-collision_layer = 2
-script = ExtResource("1_5sjw7")
-default_cavas = NodePath("DefaultCanvas")
-pistol_canvas = NodePath("PistolCanvas")
-AK_canvas = NodePath("AkCanvas")
-AK_sprite = NodePath("AkCanvas/AkBase/AnimatedSprite2D")
-AK_shot_sound = NodePath("AkCanvas/AkShot")
-pistol_sprite = NodePath("PistolCanvas/PistolBase/AnimatedSprite2D")
-pistol_shot_sound = NodePath("PistolCanvas/PistolShot")
-can_shoot_ray = NodePath("ShootingColliderCheck")
-player = NodePath(".")
-neck = NodePath("Neck")
-head = NodePath("Neck/Head")
-camera = NodePath("Neck/Head/PlayerCamera")
-slide_check = NodePath("Slide_Check")
-crouch_check = NodePath("Crouch_Check")
-up_hill_check = NodePath("UpHillCheck")
-left_wall_check = NodePath("LeftWallChecker")
-right_wall_check = NodePath("RightWallChecker")
-standing_collison = NodePath("StandingCollision")
-crouching_collison = NodePath("CrouchCollision")
-crouching_mesh = NodePath("CrouchingMesh")
-standing_mesh = NodePath("PlayerMesh")
-slide_cooldown = NodePath("SlideCooldown")
+[node name="DeathZone" type="Area3D" parent="BoxHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.51892, 0)
+collision_mask = 2
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="Player"]
-layers = 4
-mesh = SubResource("CapsuleMesh_ib2dy")
+[node name="DeathBoxCollision" type="CollisionShape3D" parent="BoxHolder/DeathZone"]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -88.178, -85.6403, 0)
+shape = SubResource("BoxShape3D_eit2o")
 
-[node name="CrouchingMesh" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.99414, 0, 0, 0, 1, 0, -0.232059, 0)
-layers = 4
-mesh = SubResource("CapsuleMesh_sln6c")
-
-[node name="Neck" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.438684, 0)
-
-[node name="Head" type="Node3D" parent="Player/Neck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.532674, 0)
-
-[node name="PlayerCamera" type="Camera3D" parent="Player/Neck/Head"]
-cull_mask = 1048571
-
-[node name="Slide_Check" type="RayCast3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.892267, 0)
-
-[node name="Crouch_Check" type="RayCast3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0.180914, -5.01091e-08)
-
-[node name="UpHillCheck" type="RayCast3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.916582, -4.00651e-08)
-
-[node name="ShootingColliderCheck" type="RayCast3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.956319, 0)
-target_position = Vector3(0, 2, -100)
-collision_mask = 3
-
-[node name="LeftWallChecker" type="ShapeCast3D" parent="Player"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.453056, 0.7108, 0)
-shape = SubResource("BoxShape3D_b4mts")
-
-[node name="RightWallChecker" type="ShapeCast3D" parent="Player"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.477336, 0.723286, 0)
-shape = SubResource("BoxShape3D_pe81v")
-
-[node name="StandingCollision" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_4ij1g")
-
-[node name="CrouchCollision" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.377396, 0)
-shape = SubResource("CapsuleShape3D_5e3vb")
-disabled = true
-
-[node name="SlideCooldown" type="Timer" parent="Player"]
-wait_time = 0.8
-one_shot = true
-
-[node name="PistolCanvas" type="CanvasLayer" parent="Player"]
-
-[node name="PistolBase" type="Control" parent="Player/PistolCanvas"]
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/PistolCanvas/PistolBase"]
-position = Vector2(214.5, -115.5)
-scale = Vector2(0.607422, 0.607422)
-sprite_frames = SubResource("SpriteFrames_16lwq")
-animation = &"pistol_fire"
-autoplay = "default"
-frame = 3
-frame_progress = 1.0
-
-[node name="ColorRect" type="ColorRect" parent="Player/PistolCanvas"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 2.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(1, 1, 1, 0.443137)
-
-[node name="PistolShot" type="AudioStreamPlayer" parent="Player/PistolCanvas"]
-stream = ExtResource("6_qps4j")
-bus = &"SFX"
-
-[node name="AkCanvas" type="CanvasLayer" parent="Player"]
-
-[node name="AkBase" type="Control" parent="Player/AkCanvas"]
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/AkCanvas/AkBase"]
-position = Vector2(131, -201)
-scale = Vector2(0.945312, 0.945312)
-sprite_frames = SubResource("SpriteFrames_qdqxh")
-animation = &"ak_fire"
-autoplay = "default"
-frame = 1
-frame_progress = 0.688589
-
-[node name="ColorRect" type="ColorRect" parent="Player/AkCanvas"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 2.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(1, 1, 1, 0.443137)
-
-[node name="AkShot" type="AudioStreamPlayer" parent="Player/AkCanvas"]
-stream = ExtResource("8_f7xc3")
-
-[node name="DefaultCanvas" type="CanvasLayer" parent="Player"]
-
-[node name="ColorRect" type="ColorRect" parent="Player/DefaultCanvas"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 2.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(1, 1, 1, 0.6)
+[node name="Player" parent="." instance=ExtResource("4_7eg3j")]
 
 [node name="Starter" parent="." instance=ExtResource("8_n12oa")]
 transform = Transform3D(0.028, 0, 0, 0, 0.028, 0, 0, 0, 0.028, -46.1714, -0.451061, 26.4445)
 
-[connection signal="timeout" from="Player/SlideCooldown" to="Player" method="_on_slide_cooldown_timeout"]
-[connection signal="animation_finished" from="Player/PistolCanvas/PistolBase/AnimatedSprite2D" to="Player" method="shoot_anim_done"]
-[connection signal="animation_finished" from="Player/AkCanvas/AkBase/AnimatedSprite2D" to="Player" method="ak_shoot_anim_done"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_382vu")
+autoplay = true
+bus = &"BGM"
